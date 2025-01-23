@@ -60,3 +60,5 @@ fi
 
 echo "Ready to sync Google Drive folder $folder_id to $local_folder."
 # Add your gdrive sync logic here if required.
+then
+exit
