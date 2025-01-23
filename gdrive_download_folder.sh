@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Function to detect the package manager and print the distro name
 detect_package_manager() {
     if [ -f /etc/os-release ]; then
@@ -13,7 +12,7 @@ detect_package_manager() {
     fi
 }
 
-        case "$DISTRO_NAME" then
+        case "$DISTRO_NAME" in
             ubuntu|debian|pop)
                 PACKAGE_MANAGER="apt"
                 INSTALL_CMD="sudo apt update && sudo apt install -y gdrive"
