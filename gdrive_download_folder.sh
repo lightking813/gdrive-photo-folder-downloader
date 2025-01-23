@@ -58,7 +58,14 @@ if [ ! -d "$local_folder" ]; then
     mkdir -p "$local_folder"
 fi
 
-echo "Ready to sync Google Drive folder $folder_id to $local_folder."
-# Add your gdrive sync logic here if required.
-then
+# Confirm to the user that the script is ready to sync
+echo "Ready to sync Google Drive folder ID '$folder_id' to the local folder: $local_folder."
+
+# Add your gdrive sync logic below
+# For example, if you are syncing the folder using gdrive:
+gdrive download --recursive --path "$local_folder" "$folder_id"
+
+# Final message to confirm completion
+echo "Sync completed. Files from Google Drive folder ID '$folder_id' are now available in $local_folder."
+
 exit
