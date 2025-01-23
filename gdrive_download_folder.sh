@@ -30,7 +30,7 @@ detect_package_manager() {
         echo "Unable to detect the distribution."
         exit 1
     fi
-
+}
 # Function to install gdrive from source (for unsupported distros)
 install_from_source() {
     echo "Installing gdrive from source... MAKE SURE YOU INSTALL GIT!!!!"
