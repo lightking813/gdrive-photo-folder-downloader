@@ -1,16 +1,19 @@
 #!/bin/bash
 
-# Function to detect the package manager
+# Function to detect the package manager and print the distro name
 detect_package_manager() {
     if [ -f /etc/os-release ]; then
-        echo "Package manager detection started."
-    else
+        # Extract the distribution name from /etc/os-release
+        DISTRO_NAME=$(grep ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+        
+        # Output the detected distro name
+        echo "Detected Distribution: $DISTRO_NAME"
         echo "Unable to detect the distribution."
         exit 1
     fi
 }
 
-        case "$DISTRO_NAME" in
+        case "$DISTRO_NAME" then
             ubuntu|debian|pop)
                 PACKAGE_MANAGER="apt"
                 INSTALL_CMD="sudo apt update && sudo apt install -y gdrive"
