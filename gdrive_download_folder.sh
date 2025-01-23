@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Exit immediately if a command fails
-set -e
-
 # Function to detect the package manager
 detect_package_manager() {
     if [ -f /etc/os-release ]; then
