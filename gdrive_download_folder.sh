@@ -6,7 +6,7 @@ detect_package_manager() {
         echo "Detected Distribution: $DISTRO_NAME"
         
         case "$DISTRO_NAME" in
-            ubuntu|debian|pop)
+            ubuntu|debian)
                 PACKAGE_MANAGER="apt"
                 INSTALL_CMD="sudo apt update && sudo apt install -y gdrive"
                 ;;
