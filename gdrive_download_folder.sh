@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # Function to detect the package manager and the distribution
 detect_package_manager() {
     if [ -f /etc/os-release ]; then
@@ -7,7 +7,7 @@ detect_package_manager() {
         DISTRO_NAME=$(grep ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
 
         case "$DISTRO_NAME" in
-            ubuntu|debian|pop) 
+            ubuntu|debian|pop)
                 PACKAGE_MANAGER="apt"
                 INSTALL_CMD="sudo apt install gdrive"
                 ;;
@@ -69,8 +69,7 @@ install_from_source() {
 }
 
 # Check if gdrive is installed, if not, try to install it
-if ! command -v gdrive &> /dev/null
-then
+if ! command -v gdrive &> /dev/null; then
     echo "gdrive not found, checking package manager..."
     
     # Detect the appropriate package manager
@@ -97,17 +96,4 @@ then
     fi
 fi
 
-# Ask the user for the Google Drive folder ID
-read -p "Enter the Google Drive folder ID: " folder_id
-
-# Define the local destination for the downloaded folder
-local_folder="$HOME/Pictures"
-
-# Check if the destination folder exists
-if [ ! -d "$local_folder" ]; then
-    echo "The destination folder $local_folder does not exist. Creating it..."
-    mkdir -p "$local_folder"
-fi
-
-# Download the Google Drive folder using gdrive
-gdrive download --recursive "$folder_id" -p "$local_folder"
+# Ask the u
