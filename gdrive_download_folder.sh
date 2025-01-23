@@ -30,16 +30,22 @@ detect_package_manager() {
         echo "Unable to detect the distribution."
         exit 1
     fi
-}
 
 # Function to install gdrive from source (for unsupported distros)
 install_from_source() {
     echo "Installing gdrive from source... MAKE SURE YOU INSTALL GIT!!!!"
+
+    # Check if the system has apt for dependencies
+    if command -v apt &> /dev/null; then
+        # Install required dependencies
+        sudo apt update
+        sudo apt install -y git golang
     else
-        echo "Unable to install dependencies. Please install Git and Go manually."
+        echo "Unable to install dependencies automatically. Please install Git and Go manually."
         exit 1
     fi
 
+    # Clone the gdrive repository and build it
     git clone https://github.com/prasmussen/gdrive.git
     cd gdrive
     go get -u github.com/prasmussen/gdrive
