@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
+# Exit immediately if a command fails
 set -e
 
-# Function to detect the package manager and the distribution
+# Function to detect the package manager
 detect_package_manager() {
     if [ -f /etc/os-release ]; then
-        # Get the name of the distribution
-        DISTRO_NAME=$(grep ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+        echo "Package manager detection started."
+    else
+        echo "Unable to detect the distribution."
+        exit 1
+    fi
+}
 
         case "$DISTRO_NAME" in
             ubuntu|debian|pop)
