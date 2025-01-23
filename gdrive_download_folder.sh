@@ -6,8 +6,8 @@ detect_package_manager() {
         # Get the name of the distribution
         DISTRO_NAME=$(grep ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
 
-        case "$DISTRO_NAME"
-            ubuntu|debian|pop) in
+        case "$DISTRO_NAME" in
+            ubuntu|debian|pop) 
                 PACKAGE_MANAGER="apt"
                 INSTALL_CMD="sudo apt install gdrive"
                 ;;
